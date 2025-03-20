@@ -1,0 +1,67 @@
+
+51x51_WaferMap - 2x6
+0:00:00 -        Start dieTestingExample
+0:00:00.108995 -         Creating Model
+0:00:00.212995 -         Added Condition 1
+0:00:01.401767 -         Added Condition 2
+0:00:01.401767 -         Added Condition 3
+0:00:01.467766 -         Added Condition 4
+0:00:01.478765 -         Added Condition 5
+0:00:01.479766 -         Solving Model
+0:00:09.040247 -         Model solved
+
+
+51x51_WaferMap - 2x16
+0:00:00 -        Start dieTestingExample
+0:00:00.108000 -         Creating Model
+0:00:00.344773 -         Added Condition 1
+0:00:03.355821 -         Added Condition 2
+0:00:03.356820 -         Added Condition 3
+0:00:03.452820 -         Added Condition 4
+0:00:03.464821 -         Added Condition 5
+0:00:03.464821 -         Solving Model
+0:00:10.239330 -         Model solved
+
+101x101 - 2x6
+0:00:00 -        Start dieTestingExample  
+0:00:00.424801 -         Creating Model   
+0:00:00.838800 -         Added Condition 1
+0:00:05.651512 -         Added Condition 2
+0:00:05.652515 -         Added Condition 3
+0:00:05.914538 -         Added Condition 4
+0:00:05.954538 -         Added Condition 5
+0:00:05.954538 -         Solving Model
+0:05:23.185386 -         Model solved
+
+0:00:00 -        Start dieTestingExample
+0:00:00.431956 -         Creating Model
+0:00:00.840419 -         Added Condition 1
+0:00:05.596515 -         Added Condition 2
+0:00:05.597514 -         Added Condition 3
+0:00:05.864487 -         Added Condition 4
+0:00:05.904483 -         Added Condition 5
+0:00:05.905485 -         Solving Model
+0:06:32.646036 -         Model solved
+
+Mit Old:
+0:00:00 -        Start dieTestingExample
+0:00:00.428955 -         Creating Model
+0:00:00.841913 -         Added Condition 1
+0:00:05.593706 -         Added Condition 2
+0:00:05.714718 -         Added Condition 3
+0:00:05.807710 -         Added Condition 4
+0:00:05.847706 -         Added Condition 5
+0:00:05.849706 -         Solving Model
+0:00:20.318138 -         Model solved
+
+
+101x101 - 2x16
+0:00:00 -        Start dieTestingExample
+0:00:00.429000 -         Creating Model 
+0:00:01.415388 -         Added Condition 1
+0:00:14.497994 -         Added Condition 2
+0:00:14.498994 -         Added Condition 3
+0:00:14.766994 -         Added Condition 4
+0:00:14.806994 -         Added Condition 5
+0:00:14.806994 -         Solving Model
+0:04:54.425243 -         Model solved
