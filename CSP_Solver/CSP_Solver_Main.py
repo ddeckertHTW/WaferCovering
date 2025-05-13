@@ -11,6 +11,7 @@ import numpy as np
 from HelperFunc.AuxiliaryFunctions import check_folder_exists, get_filepath_Json, save_impossible_solution_json, printTimestampDiff
 from HelperFunc.log_Message import logMessage
 from CSP_Solver.save_CSP_result_json import save_CSP_result_json
+import CSP_Solver_Variables as cv
 from inputMapsLibrary import *
 from probecardLibrary import probecardDict
 
@@ -255,20 +256,30 @@ def get_TD_count_dict_mandatory(inputMap, touchdown_map):
     
 
 if __name__ == '__main__':
-    testList = assembleTestList()     
+    testList = assembleTestList() 
 
-    for (inputMapFilepath, SAVE_FOLDER, probecard_size, objLimit, hintList) in testList:
-        filepath = get_filepath_Json(inputMapFilepath, probecard_size, SAVE_FOLDER, name_addition=name_addition)
+    if cv.serializedTestFlag:
+        for (inputMapFilepath, SAVE_FOLDER, probecard_size, objLimit, hintList) in testList:
+            filepath = get_filepath_Json(inputMapFilepath, probecard_size, SAVE_FOLDER, name_addition=cv.name_addition)
+            if(check_folder_exists(filepath) == False): raise Exception(f"The save folder '{os.path.dirname(filepath)}' does not exist.")
+
+            curr_inputMap =  np.loadtxt(inputMapFilepath, dtype=int)  #2D np Array of InputMap
+            # probecard must be flipped: probecards are presented in x-y fashion, but wafer is loaded as a y-x matrix
+            curr_probecard = np.array([(x[1], x[0]) for x in probecardDict[probecard_size]])
+            
+
+            # Solver Options: TouchSum TouchMax PenaltySum LexTouch
+            CSP_Solver_Main(curr_inputMap, curr_probecard, inputMapFilepath, probecard_size, cv.objFunction, 
+                            SAVE_FOLDER, saveResult=True, debugPrint=cv.debugFlag, versionID=cv.curr_versionID, name_addition=cv.name_addition, 
+                            max_time_in_seconds=cv.max_time_in_seconds, upBound = objLimit, hints = hintList, parallelWorkers = cv.solverCount) 
+
+    else:
+        filepath = get_filepath_Json(cv.inputMapFilepath, cv.probecard_size, cv.SAVE_FOLDER, name_addition=cv.name_addition)
         if(check_folder_exists(filepath) == False): raise Exception(f"The save folder '{os.path.dirname(filepath)}' does not exist.")
 
-        curr_inputMap =  np.loadtxt(inputMapFilepath, dtype=int)  #2D np Array of InputMap
-        curr_probecard = np.array([(x[0], x[1]) for x in probecardDict[probecard_size]])
-
-        # Solver Options: TouchSum TouchMax PenaltySum LexTouch
-        CSP_Solver_Main(curr_inputMap, curr_probecard, inputMapFilepath, probecard_size, objFunction, 
-                        SAVE_FOLDER, saveResult=True, debugPrint=debugFlag, versionID=curr_versionID, name_addition=name_addition, 
-                        max_time_in_seconds=max_time_in_seconds, upBound = objLimit, hints = hintList, parallelWorkers = solverCount) 
-
-
-        # LOOONG TIME
-        # CSP_Solver_Main(curr_inputMap, curr_probecard, inputMapFilepath, probecard_size, "LexTouch", SAVE_FOLDER, saveResult=True, debugPrint=True, versionID=curr_versionID)
+        curr_inputMap =  np.loadtxt(cv.inputMapFilepath, dtype=int)  #2D np Array of InputMap
+        # probecard must be flipped: probecards are presented in x-y fashion, but wafer is loaded as a y-x matrix
+        curr_probecard = np.array([(x[1], x[0]) for x in probecardDict[cv.probecard_size]])
+        CSP_Solver_Main(curr_inputMap, curr_probecard, cv.inputMapFilepath, cv.probecard_size, cv.objFunction, 
+                            cv.SAVE_FOLDER, saveResult=True, debugPrint=cv.debugFlag, versionID=cv.curr_versionID, name_addition=cv.name_addition, 
+                            max_time_in_seconds=cv.max_time_in_seconds, upBound = cv.objLimit, hints = cv.hintList, parallelWorkers = cv.solverCount) 

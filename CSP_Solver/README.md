@@ -1,6 +1,6 @@
 # OVERVIEW
 This is the subfolder containing all programs for the CSP solver. 
-To run the solver on the predefined instances, run **python CSP_Solver_Main**
+To run the solver on the predefined instances (from SerialTestSettings), run **python CSP_Solver_Main**
 
 ## Organization
 This repository is organized as follows:

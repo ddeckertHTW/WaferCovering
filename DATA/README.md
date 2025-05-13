@@ -2,7 +2,7 @@
 This is the subfolder containing the output files for the problem instances with CSP.
 
 ## Organization
-This subfolder is organized in 3 layers. In the first layer, the output files are separated by the problem type (complete = "100 Percent", contamination = "diagonal error", test structures = "mod 4"). In the next layer, the instances are categorized by wafer diameter, and in the last layer, the individual files are separated by probe card shape.
+This subfolder is organized in 3 layers. In the first layer, the output files are separated by the problem type. In the next layer, the instances are categorized by wafer diameter, and in the last layer, the individual files are separated by probe card shape.
 
 ## Encoding
 The output log contains various pieces of information about the produced solution. These encompass:
